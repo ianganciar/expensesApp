@@ -26,7 +26,7 @@ class ExpensesApp extends StatelessWidget {
         colorScheme: tema.colorScheme.copyWith(
           primary: Color.fromARGB(255, 5, 41, 70),
           secondary: Colors.lightBlue,
-          error: Colors.grey,
+          error: Color.fromARGB(255, 168, 11, 0),
         ),
         textTheme: tema.textTheme.copyWith(
             headline6: const TextStyle(
@@ -102,14 +102,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isLandScape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    final mediaQuery = MediaQuery.of(context);
+    bool isLandScape = mediaQuery.orientation == Orientation.landscape;
 
     final appBar = AppBar(
       title: Text(
         'Despesas Pessoais',
         style: TextStyle(
-          fontSize: 20 * MediaQuery.of(context).textScaleFactor,
+          fontSize: 20 * mediaQuery.textScaleFactor,
         ),
       ),
       actions: [
@@ -127,9 +127,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
-    final availableHeight = MediaQuery.of(context).size.height -
+    final availableHeight = mediaQuery.size.height -
         appBar.preferredSize.height -
-        MediaQuery.of(context).padding.top;
+        mediaQuery.padding.top;
 
     return Scaffold(
       appBar: appBar,
